@@ -8,6 +8,21 @@ body{
   min-width: 600px;
 }
 
+span{
+ color: #ED1343;
+}
+
+article{
+  position: fixed;
+  top: 0;
+  right: 0;
+  width: 162px;
+  height: 100px;
+  border: 1px solid black;
+  margin: 10px 15px;
+  background-color: white;
+}
+
 nav{
   position: fixed;
   top: 0;
@@ -15,14 +30,15 @@ nav{
   width: 162px;
   height: 100px;
   border: 1px solid black;
-  margin: 10px;
+  margin: 10px 15px;
   background-color: white;
 }
 
 @media (max-width: 740px) {
-  nav{
+  nav, article{
     position: relative;
-    margin: 0 auto;
+    display: inline-block;
+    margin: 5px;
   }
 }
 
@@ -32,6 +48,10 @@ p{
 
 table, p{
   font-size: 1.0em;
+}
+
+table{
+  width: 100%;
 }
 
 h1{
@@ -60,6 +80,7 @@ td{
   border: 3px solid black;
   font-size: 1.0em;
   border-radius: 5px;
+  z-index: 1;
 }
 
 .reset-game{
@@ -67,7 +88,8 @@ td{
   border-radius: 5px;
   background-color: white;
   border: 1px solid black;
-  margin: 5px 0;
+  margin: 5px auto;
+  display: block;
 }
 
 .container{
@@ -111,24 +133,19 @@ td{
   text-decoration: underline;
 }
 
-/*grid outline*/
-/*.grid{
-  border: 2px solid black;
+.active-player{
+  height: 70px;
+  width: 70px;
+  margin: 0 auto;
 }
 
-.mid-mid{
-  border: 5px black solid;
+.activeX{
+  background-image: url('images/tic-tac-toe-X.png');
+  background-size: 70px;
 }
 
-.top-mid, .bottom-mid{
-  border-left: 5px black solid;
-  border-right: 5px black solid;
+.activeO{
+  background-image: url('images/tic-tac-toe-O.png');
+  background-size: 70px;
 }
-
-.mid-left, .mid-right{
-  border-top: 5px black solid;
-  border-bottom: 5px black solid;
-}
-*/
-
 

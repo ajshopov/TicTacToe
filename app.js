@@ -11,13 +11,13 @@ var resetGame = document.querySelector('.reset-game');
 var P1 = document.querySelector('.win-count-P1');
 var P2 = document.querySelector('.win-count-P2');
 var announceBox = document.querySelector('.display-result');
+var activePlayer = document.querySelector('.active-player');
 
 var playerTurn = 'A';
 var gameLogic = [0,0,0,0,0,0,0,0,0];
 var winCounterP1 = 0;
 var winCounterP2 = 0;
 var gameOver = false;
-
 
 // P1.onchange = populateStorage;
 // P2.onchange = populateStorage;
@@ -40,9 +40,21 @@ function playerMove(event){
         gameLogic[event.target.getAttribute('data-cell')] = false;
         playerTurn = 'A';
       }
+      switchActivePlayer();
       checkForWin();
       checkForDraw();
+
     }
+  }
+}
+
+function switchActivePlayer(){
+  if(activePlayer.classList.contains('activeX')){
+    activePlayer.classList.remove('activeX');
+    activePlayer.classList.add('activeO');
+  } else if(activePlayer.classList.contains('activeO')){
+    activePlayer.classList.remove('activeO');
+    activePlayer.classList.add('activeX');
   }
 }
 
