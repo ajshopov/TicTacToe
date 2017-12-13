@@ -98,12 +98,12 @@ td{
 }
 
 .nought{
-  background-image: url('http://jimdscott.com/static/images/tic-tac-toe-O.png');
+  background-image: url('images/tic-tac-toe-O.png');
   background-size: 194px;
 }
 
 .cross{
-  background-image: url('http://jimdscott.com/static/images/tic-tac-toe-X.png');
+  background-image: url('images/tic-tac-toe-X.png');
   background-size: 194px;
 }
 

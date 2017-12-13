@@ -25,7 +25,6 @@ var gameOver = false;
 // function populateStorage(){
 //   sessionStorage.setItem('P1', winCounterP1);
 //   sessionStorage.setItem('P2', winCounterP2);
-
 // }  
 // sessionStorage.setItem('score1', '')
 
