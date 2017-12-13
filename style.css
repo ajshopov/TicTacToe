@@ -1,0 +1,41 @@
+.top-left, .top-mid, .top-right, .mid-left, .mid-mid, .mid-right, .bottom-left, .bottom-mid, .bottom-right{
+  display: inline-block;
+  height: 200px;
+  width: 200px;
+}
+
+.grid{
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  width: 605px;
+  height: 605px;
+}
+
+.nought{
+  background-image: url('http://jimdscott.com/static/images/tic-tac-toe-O.png');
+  background-size: 200px;
+}
+
+.cross{
+  background-image: url('http://jimdscott.com/static/images/tic-tac-toe-X.png');
+  background-size: 200px;
+}
+
+/*grid outline*/
+.mid-mid{
+  border: 1px black solid;
+}
+
+.top-mid, .bottom-mid{
+  border-left: 1px black solid;
+  border-right: 1px black solid;
+}
+
+.mid-left, .mid-right{
+  border-top: 1px black solid;
+  border-bottom: 1px black solid;
+}
+
+
+
