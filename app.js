@@ -18,6 +18,8 @@ var winCounterP1 = 0;
 var winCounterP2 = 0;
 var gameOver = false;
 
+sessionStorage.setItem('win-count-P1', P1);
+sessionStorage.setItem('win-count-P2', P2);
 
 function playerMove(event){
   if(gameOver === false){
@@ -47,7 +49,7 @@ function check3Cells(cell1,cell2,cell3){
       case true:
         console.log('winner: player 1, crosses');
         announceBox.classList.add('announcement');
-        announceBox.textContent = 'player 1, crosses, wins!';
+        announceBox.textContent = 'player 1, crosses, wins! click here to play again';
         gameOver = true;
         winCounterP1++
         P1.textContent = winCounterP1;
@@ -55,7 +57,7 @@ function check3Cells(cell1,cell2,cell3){
       case false:
         console.log('winner: player 2, noughts');
         announceBox.classList.add('announcement');
-        announceBox.textContent = 'player 2, noughts, wins!';
+        announceBox.textContent = 'player 2, noughts, wins! click here to play again';
         gameOver = true;
         winCounterP2++
         P2.textContent = winCounterP2;
@@ -69,7 +71,7 @@ function checkForDraw(){
     if(!gameLogic.includes(0)){
       gameOver = true;
       announceBox.classList.add('announcement');
-      announceBox.textContent = 'DRAW';
+      announceBox.textContent = 'DRAW! click here to play again';
       console.log('draw');
     }
   }
