@@ -7,7 +7,7 @@ var midRight = document.querySelector('.mid-right');
 var bottomLeft = document.querySelector('.bottom-left');
 var bottomMid = document.querySelector('.bottom-mid');
 var bottomRight = document.querySelector('.bottom-right');
-var newGame = document.querySelector('.new-game');
+var resetGame = document.querySelector('.reset-game');
 var P1 = document.querySelector('.win-count-P1');
 var P2 = document.querySelector('.win-count-P2');
 var announceBox = document.querySelector('.display-result');
@@ -18,23 +18,26 @@ var winCounterP1 = 0;
 var winCounterP2 = 0;
 var gameOver = false;
 
-sessionStorage.setItem('win-count-P1', P1);
-sessionStorage.setItem('win-count-P2', P2);
+
+// P1.onchange = populateStorage;
+// P2.onchange = populateStorage;
+
+// function populateStorage(){
+//   sessionStorage.setItem('P1', winCounterP1);
+//   sessionStorage.setItem('P2', winCounterP2);
+
+// }
 
 function playerMove(event){
   if(gameOver === false){
     if(!event.target.classList.contains('cross') && !event.target.classList.contains('nought')){
       if(playerTurn == 'A'){
         event.target.classList.add('cross');
-        //console.log(event.target.getAttribute('data-cell'));
         gameLogic[event.target.getAttribute('data-cell')] = true;
-        //console.log(gameLogic);
         playerTurn = 'B';
       } else if (playerTurn == 'B'){
         event.target.classList.add('nought');
-        //console.log(event.target.getAttribute('data-cell'));
         gameLogic[event.target.getAttribute('data-cell')] = false;
-        //console.log(gameLogic);
         playerTurn = 'A';
       }
       checkForWin();
@@ -49,7 +52,7 @@ function check3Cells(cell1,cell2,cell3){
       case true:
         console.log('winner: player 1, crosses');
         announceBox.classList.add('announcement');
-        announceBox.textContent = 'player 1, crosses, wins! click here to play again';
+        announceBox.textContent = 'X wins! Click here to play again';
         gameOver = true;
         winCounterP1++
         P1.textContent = winCounterP1;
@@ -57,7 +60,7 @@ function check3Cells(cell1,cell2,cell3){
       case false:
         console.log('winner: player 2, noughts');
         announceBox.classList.add('announcement');
-        announceBox.textContent = 'player 2, noughts, wins! click here to play again';
+        announceBox.textContent = 'O wins! Click here to play again';
         gameOver = true;
         winCounterP2++
         P2.textContent = winCounterP2;
@@ -71,7 +74,7 @@ function checkForDraw(){
     if(!gameLogic.includes(0)){
       gameOver = true;
       announceBox.classList.add('announcement');
-      announceBox.textContent = 'DRAW! click here to play again';
+      announceBox.textContent = 'Draw! Click here to play again';
       console.log('draw');
     }
   }
@@ -100,6 +103,14 @@ function restart(){
   announceBox.textContent = "";
 }
 
+function resetScoreboard(){
+  winCounterP1 = 0;
+  winCounterP2 = 0;
+  P1.textContent = winCounterP1;
+  P2.textContent = winCounterP2;
+  restart();
+}
+
 topLeft.addEventListener('click', playerMove)
 topMid.addEventListener('click', playerMove)
 topRight.addEventListener('click', playerMove)
@@ -109,5 +120,5 @@ midRight.addEventListener('click', playerMove)
 bottomLeft.addEventListener('click', playerMove)
 bottomMid.addEventListener('click', playerMove)
 bottomRight.addEventListener('click', playerMove)
-newGame.addEventListener('click', restart)
+resetGame.addEventListener('click', resetScoreboard)
 announceBox.addEventListener('click', restart)

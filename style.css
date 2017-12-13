@@ -5,6 +5,7 @@
 
 body{
   background-image: url('images/pexels-photo-326240.jpeg');
+  min-width: 600px;
 }
 
 nav{
@@ -27,6 +28,10 @@ h1{
   margin: 0px;
 }
 
+td{
+  font-size: 2.0em;
+}
+
 .display-result{
  display: none;
 }
@@ -41,6 +46,9 @@ h1{
   margin-top: -50px;
   background-color: white;
   display: block;
+  border: 3px solid black;
+  font-size: 1.0em;
+  border-radius: 5px;
 }
 
 .container{
@@ -57,6 +65,7 @@ h1{
 
 .grid > div:hover{
   background-color: #FFF3F1;
+  opacity: 0.5;
 }
 
 .grid{
@@ -79,6 +88,13 @@ h1{
   background-size: 194px;
 }
 
+.new-game{
+
+}
+
+.tally{
+  text-decoration: underline;
+}
 
 /*grid outline*/
 /*.grid{
