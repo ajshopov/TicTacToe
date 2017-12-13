@@ -13,13 +13,12 @@ var P2 = document.querySelector('.win-count-P2');
 
 var playerTurn = 'A';
 var gameLogic = [0,0,0,0,0,0,0,0,0];
-var gameOver = false;
 var winCounterP1 = 0;
 var winCounterP2 = 0;
 
 
 function playerMove(event){
-  if(!gameOver){
+  if(!event.target.classList.contains('cross') && !event.target.classList.contains('nought')){
     if(playerTurn == 'A'){
       event.target.classList.add('cross');
       //console.log(event.target.getAttribute('data-cell'));
@@ -33,7 +32,6 @@ function playerMove(event){
       console.log(gameLogic);
       playerTurn = 'A';
     }
-    event.target.removeEventListener('click', playerMove);
     checkForWin();
     checkForDraw();
   }
@@ -81,27 +79,10 @@ function checkForWin(){
 
 function restart(){
   gameLogic = [0,0,0,0,0,0,0,0,0];
-
-  topLeft.classList.remove('nought', 'cross');
-  topMid.classList.remove('nought', 'cross');
-  topRight.classList.remove('nought', 'cross');
-  midLeft.classList.remove('nought', 'cross');
-  midMid.classList.remove('nought', 'cross');
-  midRight.classList.remove('nought', 'cross');
-  bottomLeft.classList.remove('nought', 'cross');
-  bottomMid.classList.remove('nought', 'cross');
-  bottomRight.classList.remove('nought', 'cross');
-
-  topLeft.addEventListener('click', playerMove);
-  topMid.addEventListener('click', playerMove);
-  topRight.addEventListener('click', playerMove);
-  midLeft.addEventListener('click', playerMove);
-  midMid.addEventListener('click', playerMove);
-  midRight.addEventListener('click', playerMove);
-  bottomLeft.addEventListener('click', playerMove);
-  bottomMid.addEventListener('click', playerMove);
-  bottomRight.addEventListener('click', playerMove);
-
+  var allBoxes = document.querySelectorAll('.grid div')
+  for (var i = 0; i < allBoxes.length; i++) {
+    allBoxes[i].classList.remove('nought', 'cross');
+  }
 }
 
 topLeft.addEventListener('click', playerMove)
