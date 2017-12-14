@@ -14,6 +14,7 @@ var announceBox = document.querySelector('.display-result');
 var activePlayer = document.querySelector('.active-player');
 var themeMario = document.querySelector('input[value=mario]');
 var themeDefault = document.querySelector('input[value=default]');
+var audio = document.querySelector('audio');
 
 var playerTurn = 'A';
 var gameLogic = [0,0,0,0,0,0,0,0,0];
@@ -144,6 +145,8 @@ function changeTheme(){
     } else if(activePlayer.classList.contains('activeO')){
       activePlayer.classList.add('activeOMario');
     }
+    audio.play();
+    audio.loop = true;
   } else {
     document.body.style.background = "url('images/pexels-photo-326240.jpeg')"; 
     document.querySelector('h1').classList.remove('h1Mario');
@@ -156,6 +159,7 @@ function changeTheme(){
     }
     activePlayer.classList.remove('activeXMario');
     activePlayer.classList.remove('activeOMario');
+    audio.pause();
   }
 }
 
