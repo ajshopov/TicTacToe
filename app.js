@@ -22,6 +22,7 @@ var winCounterP1 = 0;
 var winCounterP2 = 0;
 var gameOver = false;
 
+getLocalStorage();
 
 function playerMove(event){
   if(gameOver === false){
@@ -75,6 +76,7 @@ function check3Cells(cell1,cell2,cell3){
         gameOver = true;
         winCounterP1++
         P1.textContent = winCounterP1;
+        setLocalStorage();
         break;
       case false:
         announceBox.classList.add('announcement');
@@ -82,9 +84,22 @@ function check3Cells(cell1,cell2,cell3){
         gameOver = true;
         winCounterP2++
         P2.textContent = winCounterP2;
+        setLocalStorage();
         break;
     }
   }
+}
+
+function setLocalStorage(){
+  localStorage.setItem('scoreX', winCounterP1);
+  localStorage.setItem('scoreY', winCounterP2);
+}
+
+function getLocalStorage(){
+  P1.textContent = localStorage.getItem('scoreX');
+  P2.textContent = localStorage.getItem('scoreY');
+  winCounterP1 = localStorage.getItem('scoreX');
+  winCounterP2 = localStorage.getItem('scoreY');
 }
 
 function checkForDraw(){
@@ -162,7 +177,6 @@ function changeTheme(){
     audio.pause();
   }
 }
-
 
 topLeft.addEventListener('click', playerMove)
 topMid.addEventListener('click', playerMove)

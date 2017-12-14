@@ -10,7 +10,10 @@
 
 body{
   background-image: url('images/pexels-photo-326240.jpeg');
+  background-repeat: none;
   min-width: 600px;
+  max-width: 1500px;
+  max-height: 1271px;
 }
 
 span{
