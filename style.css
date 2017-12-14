@@ -166,6 +166,12 @@ td{
   font-family: mario;
 }
 
+.score-fonts{
+  padding-top: 8px;
+  color: #ED1343;
+  font-family: mario;
+}
+
 .crossMario{
   background-image: url('images/200px-StarMK8.png');
   background-repeat: no-repeat;

@@ -148,6 +148,8 @@ function changeTheme(){
   if(document.querySelector('input[name=theme]:checked').value === 'mario'){
     document.body.style.background = "url('images/36173.jpg')";
     document.querySelector('h1').classList.add('h1Mario');
+    P1.classList.add('score-fonts');
+    P2.classList.add('score-fonts');
     for (var i = 0; i < usedBoxes.length; i++) {
       if(usedBoxes[i].classList.contains('nought')){
         usedBoxes[i].classList.add('noughtMario');
@@ -165,6 +167,8 @@ function changeTheme(){
   } else {
     document.body.style.background = "url('images/pexels-photo-326240.jpeg')"; 
     document.querySelector('h1').classList.remove('h1Mario');
+    P1.classList.remove('score-fonts');
+    P2.classList.remove('score-fonts');
     for (var i = 0; i < usedBoxes.length; i++) {
       if(usedBoxes[i].classList.contains('nought')){
         usedBoxes[i].classList.remove('noughtMario');
