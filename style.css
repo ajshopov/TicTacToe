@@ -157,11 +157,18 @@ td{
   background-size: 70px;
 }
 
-/*theme change*/
+/*_____________Mario theme changes_______________*/
+
 .h1Mario{
   margin-top: 20px;
   color: #ED1343;
   font-family: mario;
+}
+
+.crossMario{
+  background-image: url('images/200px-StarMK8.png');
+  background-repeat: no-repeat;
+  background-position: center;
 }
 
 .noughtMario{
@@ -170,8 +177,15 @@ td{
   background-position: center;
 }
 
-.crossMario{
+.activeXMario{
   background-image: url('images/200px-StarMK8.png');
-  background-repeat: no-repeat;
   background-position: center;
+  background-repeat: no-repeat;
+
+}
+
+.activeOMario{
+  background-image: url('images/200px-RedShellMK8.png');
+  background-position: center;
+  background-repeat: no-repeat;
 }

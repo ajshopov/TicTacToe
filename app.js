@@ -43,7 +43,6 @@ function playerMove(event){
       switchActivePlayer();
       checkForWin();
       checkForDraw();
-
     }
   }
 }
@@ -51,10 +50,18 @@ function playerMove(event){
 function switchActivePlayer(){
   if(activePlayer.classList.contains('activeX')){
     activePlayer.classList.remove('activeX');
+    activePlayer.classList.remove('activeXMario');
     activePlayer.classList.add('activeO');
+    if(document.querySelector('input[name=theme]:checked').value === 'mario'){
+      activePlayer.classList.add('activeOMario');
+    }
   } else if(activePlayer.classList.contains('activeO')){
     activePlayer.classList.remove('activeO');
+    activePlayer.classList.remove('activeOMario');
     activePlayer.classList.add('activeX');
+    if(document.querySelector('input[name=theme]:checked').value === 'mario'){
+      activePlayer.classList.add('activeXMario');
+    }
   }
 }
 
@@ -128,11 +135,14 @@ function changeTheme(){
     for (var i = 0; i < usedBoxes.length; i++) {
       if(usedBoxes[i].classList.contains('nought')){
         usedBoxes[i].classList.add('noughtMario');
-        //usedBoxes[i].style.backgroundImage = "url('images/200px-RedShellMK8.png')"
       } else if(usedBoxes[i].classList.contains('cross')){
         usedBoxes[i].classList.add('crossMario');
-        //usedBoxes[i].style.backgroundImage = "url('images/200px-StarMK8.png')"
       }
+    }
+    if(activePlayer.classList.contains('activeX')){
+    activePlayer.classList.add('activeXMario');
+    } else if(activePlayer.classList.contains('activeO')){
+      activePlayer.classList.add('activeOMario');
     }
   } else {
     document.body.style.background = "url('images/pexels-photo-326240.jpeg')"; 
@@ -140,12 +150,12 @@ function changeTheme(){
     for (var i = 0; i < usedBoxes.length; i++) {
       if(usedBoxes[i].classList.contains('nought')){
         usedBoxes[i].classList.remove('noughtMario');
-        //usedBoxes[i].style.backgroundImage = "url('images/tic-tac-toe-O.png')"
       } else if(usedBoxes[i].classList.contains('cross')){
         usedBoxes[i].classList.remove('crossMario');
-        //usedBoxes[i].style.backgroundImage = "url('images/tic-tac-toe-X.png')"
       }
     }
+    activePlayer.classList.remove('activeXMario');
+    activePlayer.classList.remove('activeOMario');
   }
 }
 
