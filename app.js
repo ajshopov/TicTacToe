@@ -12,6 +12,8 @@ var P1 = document.querySelector('.win-count-P1');
 var P2 = document.querySelector('.win-count-P2');
 var announceBox = document.querySelector('.display-result');
 var activePlayer = document.querySelector('.active-player');
+var themeMario = document.querySelector('input[value=mario]');
+var themeDefault = document.querySelector('input[value=default]');
 
 var playerTurn = 'A';
 var gameLogic = [0,0,0,0,0,0,0,0,0];
@@ -123,6 +125,21 @@ function resetScoreboard(){
   restart();
 }
 
+function changeTheme(){
+  if(document.querySelector('input[name=theme]:checked').value === 'mario'){
+    //console.log('mario theme');
+    document.body.style.background = "url('images/36173.jpg')";
+    document.querySelector('h1').classList.add('h1Mario');
+
+  } else {
+    //console.log('default theme');
+    document.body.style.background = "url('images/pexels-photo-326240.jpeg')"; 
+    document.querySelector('h1').classList.remove('h1Mario');
+  }
+
+}
+
+
 topLeft.addEventListener('click', playerMove)
 topMid.addEventListener('click', playerMove)
 topRight.addEventListener('click', playerMove)
@@ -134,3 +151,5 @@ bottomMid.addEventListener('click', playerMove)
 bottomRight.addEventListener('click', playerMove)
 resetGame.addEventListener('click', resetScoreboard)
 announceBox.addEventListener('click', restart)
+themeMario.addEventListener('click', changeTheme)
+themeDefault.addEventListener('click', changeTheme)

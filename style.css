@@ -1,3 +1,8 @@
+@font-face{
+  font-family: mario;
+  src: url('fonts/SuperMario256.ttf');
+}
+
 *{
   font-family: 'Source Sans Pro', sans-serif;
   box-sizing: border-box;
@@ -40,6 +45,9 @@ nav{
     display: inline-block;
     margin: 5px;
   }
+  .announcement{
+    margin: 0 auto;
+  }
 }
 
 p{
@@ -70,7 +78,7 @@ td{
 .announcement{
   position: absolute;
   top: 50%;
-  left:50%;
+  left: 50%;
   width: 162px;
   height: 100px;
   margin-left: -81px;
@@ -149,3 +157,9 @@ td{
   background-size: 70px;
 }
 
+.h1Mario{
+  margin-top: 20px;
+  color: #ED1343;
+  font-family: mario;
+
+}
