@@ -157,9 +157,21 @@ td{
   background-size: 70px;
 }
 
+/*theme change*/
 .h1Mario{
   margin-top: 20px;
   color: #ED1343;
   font-family: mario;
+}
 
+.noughtMario{
+  background-image: url('images/200px-RedShellMK8.png');
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+.crossMario{
+  background-image: url('images/200px-StarMK8.png');
+  background-repeat: no-repeat;
+  background-position: center;
 }

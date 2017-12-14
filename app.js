@@ -21,24 +21,22 @@ var winCounterP1 = 0;
 var winCounterP2 = 0;
 var gameOver = false;
 
-// P1.onchange = populateStorage;
-// P2.onchange = populateStorage;
-
-// function populateStorage(){
-//   sessionStorage.setItem('P1', winCounterP1);
-//   sessionStorage.setItem('P2', winCounterP2);
-// }  
-// sessionStorage.setItem('score1', '')
 
 function playerMove(event){
   if(gameOver === false){
     if(!event.target.classList.contains('cross') && !event.target.classList.contains('nought')){
       if(playerTurn == 'A'){
         event.target.classList.add('cross');
+        if(document.querySelector('input[name=theme]:checked').value === 'mario'){
+          event.target.classList.add('crossMario');
+        }
         gameLogic[event.target.getAttribute('data-cell')] = true;
         playerTurn = 'B';
       } else if (playerTurn == 'B'){
         event.target.classList.add('nought');
+        if(document.querySelector('input[name=theme]:checked').value === 'mario'){
+          event.target.classList.add('noughtMario');
+        }
         gameLogic[event.target.getAttribute('data-cell')] = false;
         playerTurn = 'A';
       }
@@ -64,17 +62,15 @@ function check3Cells(cell1,cell2,cell3){
   if(cell1 === cell2 && cell1 === cell3 && cell1 !== 0){
     switch(cell1){
       case true:
-        console.log('winner: player 1, crosses');
         announceBox.classList.add('announcement');
-        announceBox.textContent = 'X wins! Click here to play again';
+        announceBox.textContent = 'P1 wins! Click here to play again';
         gameOver = true;
         winCounterP1++
         P1.textContent = winCounterP1;
         break;
       case false:
-        console.log('winner: player 2, noughts');
         announceBox.classList.add('announcement');
-        announceBox.textContent = 'O wins! Click here to play again';
+        announceBox.textContent = 'P2 wins! Click here to play again';
         gameOver = true;
         winCounterP2++
         P2.textContent = winCounterP2;
@@ -89,7 +85,6 @@ function checkForDraw(){
       gameOver = true;
       announceBox.classList.add('announcement');
       announceBox.textContent = 'Draw! Click here to play again';
-      console.log('draw');
     }
   }
 }
@@ -111,7 +106,7 @@ function restart(){
   gameOver = false;
   var allBoxes = document.querySelectorAll('.grid div')
   for (var i = 0; i < allBoxes.length; i++) {
-    allBoxes[i].classList.remove('nought', 'cross');
+    allBoxes[i].classList.remove('nought', 'cross', 'noughtMario', 'crossMario');
   }
   announceBox.classList.remove('announcement');
   announceBox.textContent = "";
@@ -126,17 +121,32 @@ function resetScoreboard(){
 }
 
 function changeTheme(){
+  var usedBoxes = document.querySelectorAll('.grid div')
   if(document.querySelector('input[name=theme]:checked').value === 'mario'){
-    //console.log('mario theme');
     document.body.style.background = "url('images/36173.jpg')";
     document.querySelector('h1').classList.add('h1Mario');
-
+    for (var i = 0; i < usedBoxes.length; i++) {
+      if(usedBoxes[i].classList.contains('nought')){
+        usedBoxes[i].classList.add('noughtMario');
+        //usedBoxes[i].style.backgroundImage = "url('images/200px-RedShellMK8.png')"
+      } else if(usedBoxes[i].classList.contains('cross')){
+        usedBoxes[i].classList.add('crossMario');
+        //usedBoxes[i].style.backgroundImage = "url('images/200px-StarMK8.png')"
+      }
+    }
   } else {
-    //console.log('default theme');
     document.body.style.background = "url('images/pexels-photo-326240.jpeg')"; 
     document.querySelector('h1').classList.remove('h1Mario');
+    for (var i = 0; i < usedBoxes.length; i++) {
+      if(usedBoxes[i].classList.contains('nought')){
+        usedBoxes[i].classList.remove('noughtMario');
+        //usedBoxes[i].style.backgroundImage = "url('images/tic-tac-toe-O.png')"
+      } else if(usedBoxes[i].classList.contains('cross')){
+        usedBoxes[i].classList.remove('crossMario');
+        //usedBoxes[i].style.backgroundImage = "url('images/tic-tac-toe-X.png')"
+      }
+    }
   }
-
 }
 
 
