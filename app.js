@@ -8,8 +8,8 @@ var bottomLeft = document.querySelector('.bottom-left');
 var bottomMid = document.querySelector('.bottom-mid');
 var bottomRight = document.querySelector('.bottom-right');
 var resetGame = document.querySelector('.reset-game');
-var P1 = document.querySelector('.win-count-P1');
-var P2 = document.querySelector('.win-count-P2');
+var P1Table = document.querySelector('.win-count-P1');
+var P2Table = document.querySelector('.win-count-P2');
 var announceBox = document.querySelector('.display-result');
 var activePlayer = document.querySelector('.active-player');
 var themeMario = document.querySelector('input[value=mario]');
@@ -23,6 +23,27 @@ var winCounterP2 = 0;
 var gameOver = false;
 
 getLocalStorage();
+
+function setLocalStorage(){
+  localStorage.setItem('scoreX', winCounterP1);
+  localStorage.setItem('scoreY', winCounterP2);
+  localStorage.setItem('startingPlayer', playerTurn);
+}
+
+function getLocalStorage(){
+  if(localStorage.getItem('startingPlayer') == null){
+    playerTurn == 'A';
+  } else {
+    playerTurn = localStorage.getItem('startingPlayer');
+    if(playerTurn == 'B'){
+      switchActivePlayer();
+    }
+  }
+  P1Table.textContent = localStorage.getItem('scoreX');
+  P2Table.textContent = localStorage.getItem('scoreY');
+  winCounterP1 = localStorage.getItem('scoreX');
+  winCounterP2 = localStorage.getItem('scoreY');
+}
 
 function playerMove(event){
   if(gameOver === false){
@@ -42,9 +63,9 @@ function playerMove(event){
         gameLogic[event.target.getAttribute('data-cell')] = false;
         playerTurn = 'A';
       }
-      switchActivePlayer();
       checkForWin();
       checkForDraw();
+      switchActivePlayer();
     }
   }
 }
@@ -72,34 +93,22 @@ function check3Cells(cell1,cell2,cell3){
     switch(cell1){
       case true:
         announceBox.classList.add('announcement');
-        announceBox.textContent = 'P1 wins! Click here to play again';
+        announceBox.textContent = 'Player X Wins! Click here to play again';
         gameOver = true;
         winCounterP1++
-        P1.textContent = winCounterP1;
+        P1Table.textContent = winCounterP1;
         setLocalStorage();
         break;
       case false:
         announceBox.classList.add('announcement');
-        announceBox.textContent = 'P2 wins! Click here to play again';
+        announceBox.textContent = 'Player O Wins! Click here to play again';
         gameOver = true;
         winCounterP2++
-        P2.textContent = winCounterP2;
+        P2Table.textContent = winCounterP2;
         setLocalStorage();
         break;
     }
   }
-}
-
-function setLocalStorage(){
-  localStorage.setItem('scoreX', winCounterP1);
-  localStorage.setItem('scoreY', winCounterP2);
-}
-
-function getLocalStorage(){
-  P1.textContent = localStorage.getItem('scoreX');
-  P2.textContent = localStorage.getItem('scoreY');
-  winCounterP1 = localStorage.getItem('scoreX');
-  winCounterP2 = localStorage.getItem('scoreY');
 }
 
 function checkForDraw(){
@@ -108,6 +117,7 @@ function checkForDraw(){
       gameOver = true;
       announceBox.classList.add('announcement');
       announceBox.textContent = 'Draw! Click here to play again';
+      setLocalStorage();
     }
   }
 }
@@ -123,7 +133,6 @@ function checkForWin(){
   check3Cells(gameLogic[2], gameLogic[4], gameLogic[6]);
 }
 
-
 function restart(){
   gameLogic = [0,0,0,0,0,0,0,0,0];
   gameOver = false;
@@ -138,8 +147,13 @@ function restart(){
 function resetScoreboard(){
   winCounterP1 = 0;
   winCounterP2 = 0;
-  P1.textContent = winCounterP1;
-  P2.textContent = winCounterP2;
+  P1Table.textContent = winCounterP1;
+  P2Table.textContent = winCounterP2;
+  if(playerTurn == 'B'){
+    switchActivePlayer();
+    playerTurn = 'A';
+  }
+  setLocalStorage();
   restart();
 }
 
@@ -148,8 +162,8 @@ function changeTheme(){
   if(document.querySelector('input[name=theme]:checked').value === 'mario'){
     document.body.style.background = "url('images/36173.jpg')";
     document.querySelector('h1').classList.add('h1Mario');
-    P1.classList.add('score-fonts');
-    P2.classList.add('score-fonts');
+    P1Table.classList.add('score-fonts');
+    P2Table.classList.add('score-fonts');
     for (var i = 0; i < usedBoxes.length; i++) {
       if(usedBoxes[i].classList.contains('nought')){
         usedBoxes[i].classList.add('noughtMario');
@@ -167,8 +181,8 @@ function changeTheme(){
   } else {
     document.body.style.background = "url('images/pexels-photo-326240.jpeg')"; 
     document.querySelector('h1').classList.remove('h1Mario');
-    P1.classList.remove('score-fonts');
-    P2.classList.remove('score-fonts');
+    P1Table.classList.remove('score-fonts');
+    P2Table.classList.remove('score-fonts');
     for (var i = 0; i < usedBoxes.length; i++) {
       if(usedBoxes[i].classList.contains('nought')){
         usedBoxes[i].classList.remove('noughtMario');

@@ -74,7 +74,7 @@ td{
 }
 
 .display-result{
- display: none;
+  display: none;
 }
 
 .announcement{
@@ -171,10 +171,7 @@ label> input + img{
   margin-left: 10px;
 }
 
-
-
 /*_____________Mario theme changes_______________*/
-
 .h1Mario{
   margin-top: 20px;
   color: #ED1343;
