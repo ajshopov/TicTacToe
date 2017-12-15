@@ -117,6 +117,13 @@ function checkForDraw(){
       gameOver = true;
       announceBox.classList.add('announcement');
       announceBox.textContent = 'Draw! Click here to play again';
+      if(document.querySelector('input[name=theme]:checked').value === 'mario'){
+        audio.pause();
+        drawmusic.play();
+        setTimeout(function(){
+          audio.play();
+        }, 5000)
+      }
       setLocalStorage();
     }
   }
