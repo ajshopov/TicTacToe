@@ -12,6 +12,8 @@ In addition to building the standard Tic Tac Toe game, I included a display box 
 
 ![Screenshot Home Page](https://github.com/ajshopov/tictactoe/blob/master/images/game_page.png)
 
-For some extra flair, the game has a Mario-themed skin that can be toggled on during gameplay. The skin changes the X and O icons, fonts, background and plays the Mario theme music. 
+For some extra flair, the game has a Mario-themed skin that can be toggled on during gameplay. The skin changes the X and O icons, fonts, background and plays the Mario theme music.
+
+Techs used: HTML, CSS, JavaScript.
 
 ![Screenshot Theme](https://github.com/ajshopov/tictactoe/blob/master/images/theme_change.png)
